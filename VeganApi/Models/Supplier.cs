@@ -10,5 +10,6 @@ namespace VeganApi.Models
         public Guid SupplierId { get; set; }
         public string SupplierName { get; set; }
         public string SupplierLocation { get; set; }
+        public IEnumerable<Product> Products { get; set; }
     }
 }

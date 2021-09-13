@@ -31,7 +31,7 @@ namespace VeganApi
         {
             services.AddControllers();
             services.AddDbContext<ApplicationContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
-            //.AddSingleton<IRepository,Repository()
+            services.AddSingleton<IRepository, Repository<ApplicationContext>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

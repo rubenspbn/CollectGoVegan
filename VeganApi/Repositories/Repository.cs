@@ -39,7 +39,7 @@ namespace VeganApi.Repositories
             return await dbContext.Set<T>().Include(include).Where(where).ToListAsync();
         }
 
-        public async Task<T> SelectById<T>(int id) where T : class
+        public async Task<T> SelectById<T>(Guid id) where T : class
         {
             return await dbContext.Set<T>().FindAsync(id);
         }

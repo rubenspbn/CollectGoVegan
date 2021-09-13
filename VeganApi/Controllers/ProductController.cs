@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VeganApi.Interfaces;
+using VeganApi.Models;
 
 namespace VeganApi.Controllers
 {
@@ -12,9 +13,22 @@ namespace VeganApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        private readonly IRepository _repo;
         public ProductController(IRepository repo)
         {
-            IRepository _repo = repo;
+            _repo = repo;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<Product>> GetProducts()
+        {
+            return await _repo.SelectAll<Product>();
+        }
+
+        [HttpGet]
+        public async Task<Product> GetProductAsync(Guid id)
+        {
+            return await _repo.SelectById<Product>(id);
         }
     }
 }

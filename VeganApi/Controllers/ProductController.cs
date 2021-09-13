@@ -9,8 +9,8 @@ using VeganApi.Models;
 
 namespace VeganApi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
         private readonly IRepository _repo;
@@ -19,13 +19,13 @@ namespace VeganApi.Controllers
             _repo = repo;
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<Product>> GetProducts()
+        [HttpGet("[Action]")]
+                public async Task<IEnumerable<Product>> GetProducts()
         {
             return await _repo.SelectAll<Product>();
         }
 
-        [HttpGet]
+        [HttpGet("[Action]/{id}")]
         public async Task<Product> GetProductAsync(Guid id)
         {
             return await _repo.SelectById<Product>(id);

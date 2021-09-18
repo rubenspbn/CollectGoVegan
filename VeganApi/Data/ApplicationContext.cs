@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using VeganApi.Models;
 
 namespace VeganApi.Data
@@ -24,6 +21,7 @@ namespace VeganApi.Data
             // Define composite key.
             builder.Entity<UnitsAvailable>()
                 .HasKey(ua => new { ua.ProductId, ua.StoreId });
+
             // Convert Guid to byte[] vice versa
             builder.Entity<Product>().Property(p => p.ProductId).HasConversion(
                 v => v.ToString(),

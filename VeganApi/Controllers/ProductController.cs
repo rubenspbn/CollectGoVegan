@@ -18,9 +18,9 @@ namespace VeganApi.Controllers
         }
 
         [HttpGet("[Action]")]
-        public async Task<IEnumerable<Product>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _repo.SelectAll<Product>();
+            return Ok(new { products = await _repo.SelectAll<Product>() });
         }
 
         [HttpGet("[Action]/{id}")]
